@@ -1016,14 +1016,12 @@ namespace FirstWinProject {
 		this->result_label->Text = System::Convert::ToString(res);
 	}
 	private: System::Void btn_bckspace_Click_1(System::Object^ sender, System::EventArgs^ e) {
-		String^ currentText = this->result_label->Text;
-
-		if (currentText->Length > 1) {
-			this->result_label->Text = currentText->Remove(currentText->Length - 1);
-		}
-		else {
-			this->result_label->Text = "0";
-		}
+		if (Convert::ToDouble(result_label->Text) < 0 && result_label->Text->Length == 2)
+			result_label->Text = "0";
+		if (result_label->Text->Length > 1)
+			result_label->Text = result_label->Text->Remove(result_label->Text->Length - 1);
+		else
+			result_label->Text = "0";
 	}
 
 	private: String^ ConvertFromDecimal(long long number, int base)
@@ -1190,3 +1188,4 @@ namespace FirstWinProject {
 	}
 };
 }
+
